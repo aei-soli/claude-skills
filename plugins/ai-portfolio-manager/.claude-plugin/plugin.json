@@ -1,0 +1,19 @@
+{
+  "name": "ai-portfolio-manager",
+  "description": "The SprintFleet Method: manage a portfolio of projects with AI \u2014 persistent master tracker + weekly sprint plans routing tasks across AI models and subscriptions, with usage-budget management, check-ins, remediation, and sprint-end reports.",
+  "version": "1.3.0",
+  "author": {
+    "name": "Adrian Ionescu",
+    "email": "aeionescu@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "productivity",
+    "project-management",
+    "sprint-planning",
+    "model-routing",
+    "usage-limits",
+    "portfolio"
+  ],
+  "homepage": "https://github.com/aei-soli/claude-skills"
+}

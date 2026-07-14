@@ -1,0 +1,58 @@
+{
+  "skill_name": "ai-sprint-planner",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "I have a Claude Max plan and Gemini, plus an old gaming PC. I'm juggling 5 projects \u2014 an app launch, a grant application due Friday, two client reports, a personal blog, and cleaning up my photo archive. Plan my week so I actually finish the grant. Assume my Max usage shows 40% used on the all-models bar and 55% on the Opus bar, resetting Wednesday 2pm. I can do about one solid focus block a day, mornings.",
+      "expected_output": "A structured weekly sprint plan: verified budget cycles, routing table across Claude/Gemini/local PC, human-first daily schedule with one starred task/day, grant protected in slippage order, scoreboard, sprint rules",
+      "files": [],
+      "assertions": [
+        "Splits the week into budget cycles around the Wed 14:00 reset and treats the remaining premium % as a non-carryover burn-down",
+        "Contains a tool routing table assigning tasks across Claude premium, default model, Gemini, and the local PC",
+        "Daily schedule lists the human block first with exactly one starred must-do per day",
+        "Grant is explicitly protected in a stated slippage priority order",
+        "Contains a per-project scoreboard and numbered sprint rules",
+        "States a degradation path if the premium budget runs out early"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "I keep running out of Claude usage by Wednesday every week. I use it for everything \u2014 code, emails, research, summarizing PDFs. I also have a ChatGPT Plus sub I barely touch. How should I split my work between models so I stop hitting the wall?",
+      "expected_output": "A routing rule by task class (premium vs default vs research lanes), budget-cycle awareness (reset times, burn-down), concrete reallocation of the listed task types, honest tier assessment",
+      "files": [],
+      "assertions": [
+        "Provides a compact routing rule organized by task class (premium vs default vs research lanes)",
+        "Explicitly reallocates each named workload: code, emails, research, PDF summarization",
+        "Addresses reset timing / budget cycles and front-loading of premium work",
+        "Labels unverified plan-limit assumptions and/or instructs the user to check the usage screen",
+        "Gives an honest capability assessment of ChatGPT Plus relative to Claude (not dismissive, not flattering)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "help me organize next week - freelance translator here, i have chatgpt plus and claude pro, three client translation jobs (one due tuesday, two flexible) and i want to finally redo my website. only mornings free, afternoons i teach.",
+      "expected_output": "A right-sized sprint plan (small portfolio, same skeleton): one must-do per morning, tuesday deadline protected, model routing for translation vs web work, decision/reading separation, no over-engineering",
+      "files": [],
+      "assertions": [
+        "Plan is right-sized: small task inventory, no fabricated complexity, mornings-only respected with afternoons excluded",
+        "Exactly one must-do (starred or equivalent) per available morning",
+        "Tuesday-deadline job explicitly protected with a stated slippage/priority order",
+        "Routes translation vs website work to specific models and addresses client-text confidentiality",
+        "Budget/usage numbers labeled unverified or user instructed to verify them"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "It's Wednesday evening and I'm behind on my sprint plan. The plan had the grant as top priority (due Friday 5pm), then a client report, then app work \u2014 one must-do per day. A client emergency ate Monday and Tuesday mornings so I skipped both must-dos. My Claude usage screen says: all-models bar 70% used, Opus bar 85% used, both reset Thursday 9am. And a second client just asked for a project quote by Monday. What do I do with the rest of the week?",
+      "expected_output": "Three-gauge assessment (budget/tasks/human), missed must-dos dropped or delegated per priority order rather than stacked forward, grant premium work scheduled into the fresh Thursday cycle, quote handled explicitly (carry-over or named displacement), revised Thu-Sun plan with one must-do per day",
+      "files": [],
+      "assertions": [
+        "Assesses the situation on budget, task-status, and human gauges before prescribing actions",
+        "Missed must-dos are dropped/delegated per the stated priority order, not all rescheduled forward (no stacking)",
+        "Uses the Thursday 9am reset deliberately: grant premium work into the fresh cycle; remaining 15% Opus restricted to essentials",
+        "The new quote request is explicitly deferred to carry-over/next sprint OR displaces a specifically named task",
+        "Produces a revised rest-of-week plan (revision marked) with one must-do per day and the grant protected"
+      ]
+    }
+  ]
+}
