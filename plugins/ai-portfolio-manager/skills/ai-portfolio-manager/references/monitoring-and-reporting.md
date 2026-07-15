@@ -10,7 +10,7 @@ Ask the user for exactly three things — nothing that requires opening more tha
 2. Did yesterday's ★ happen? (yes / partly / no + one word why)
 3. Anything new landed? (new tasks, moved deadlines)
 
-Then answer in four lines or fewer: on/off track per gauge, today's ★ restated, and any single adjustment. A daily check-in that produces a wall of text will be abandoned by day three — brevity is the feature. In environments with scheduled tasks, offer to schedule this each morning.
+Then answer in four lines or fewer: on/off track per gauge, today's ★ restated, and any single adjustment. Also scan the plan for `[? — Awaiting Human Decision: …]` markers and surface any that block other lanes — an unmade decision is the most expensive kind of slippage because it stalls AI lanes that would otherwise finish on their own. A daily check-in that produces a wall of text will be abandoned by day three — brevity is the feature. In environments with scheduled tasks, offer to schedule this each morning.
 
 ## Mid-sprint review (10 minutes, around the midpoint or after a budget reset)
 

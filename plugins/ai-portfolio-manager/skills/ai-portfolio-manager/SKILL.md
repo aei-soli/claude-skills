@@ -26,7 +26,7 @@ If the user only wants part of this (e.g., just "which model for which task", ju
 
 ## The master tracker (portfolio layer)
 
-Before the first sprint, establish the source of truth. If the user has a tracker or task list, adopt it; if not, build one from a brain-dump interview — the goal is that *no project lives only in the user's head*. One xlsx workbook (or markdown equivalent): a master sheet with one row per project (number, category, necessary-vs-want, priority, status, complexity, target date, and a concrete **Next Step** — the most important cell, since a project without one is stalled by definition), plus a Roadmap sheet per complex project whose task rows carry an **AI Prompt column**: a ready-to-paste prompt that lets any future session execute the task cold. Sprints pull candidate tasks from the tracker and write statuses back at sprint-end, so the two layers never drift apart. The tracker is accompanied by a correlated file system it must keep in sync: one markdown **memory file** per substantial project (objective, work plan, dated session log — the project's long-term memory) and optionally an index that mirrors the tracker; exactly one file is declared source of truth, new project numbers come only from it, and mirrors are re-synced at sprint-end. Read `references/portfolio-tracker.md` for the full structure, bootstrap interview, sync and correlation rules, and the monthly portfolio-review checklist.
+Before the first sprint, establish the source of truth. If the user has a tracker or task list, adopt it; if not, build one from a brain-dump interview — the goal is that *no project lives only in the user's head*. One xlsx workbook (or markdown equivalent): a master sheet with one row per project (number, category, necessary-vs-want, priority, status, complexity, confidentiality tier, target date, and a concrete **Next Step** — the most important cell, since a project without one is stalled by definition), plus a Roadmap sheet per complex project whose task rows carry an **AI Prompt column**: a ready-to-paste prompt that lets any future session execute the task cold. Sprints pull candidate tasks from the tracker and write statuses back at sprint-end, so the two layers never drift apart. The tracker is accompanied by a correlated file system it must keep in sync: one markdown **memory file** per substantial project (objective, work plan, dated session log — the project's long-term memory) and optionally an index that mirrors the tracker; exactly one file is declared source of truth, new project numbers come only from it, and mirrors are re-synced at sprint-end. Read `references/portfolio-tracker.md` for the full structure, bootstrap interview, sync and correlation rules, and the monthly portfolio-review checklist.
 
 ## Step 0 — Settings and optimization mode
 
@@ -39,7 +39,15 @@ Ask (or infer from context and confirm) what this sprint optimizes for. The mode
 | **Budget-first** | User keeps hitting limits, or between critical pushes | Route DOWN aggressively. Premium by exception with one-line justification; maximize the background/batch lane; default model is the workhorse |
 | **Deadline-first** | A date is at risk | Optimize elapsed time: parallelize agent runs, stars go to whatever unblocks the critical path, non-deadline lanes frozen for the sprint |
 
-Also record as settings: subscriptions and reset cycles, human focus blocks per day, protected lanes (deadlines that outrank everything), confidentiality constraints (what may never leave local/approved tools), and reporting preference (markdown vs xlsx).
+Also record as settings: subscriptions and reset cycles, human focus blocks per day, protected lanes (deadlines that outrank everything), and reporting preference (markdown vs xlsx).
+
+**Confidentiality tiers.** Every project (or individual task) carries one of three tiers, recorded in the tracker and honored by routing:
+
+- **Open** — any lane.
+- **Restricted** — approved cloud vendors only; no third-party plugins, marketplaces, or experimental tools.
+- **Strict** — the data never leaves machines the user controls. Routing locks to the local/offline lane (e.g., local open models on the user's own hardware, reachable over their private network), *overriding the optimization mode*. If no local lane exists, Strict tasks route to the human, and the plan says so honestly rather than quietly downgrading the tier.
+
+The override direction matters: modes optimize preferences, tiers enforce boundaries. A boundary always beats a preference.
 
 A note on what is being optimized: the token cost of *writing* a plan is trivial; the plan exists to allocate the expensive things — premium-model budget and human hours — across the week. Mode choices should be explained to the user in those terms.
 
@@ -56,7 +64,7 @@ Then be honest about capability tiers. Do not flatter the user's hardware or sub
 
 The output of this step is a **routing rule** — one sentence per resource, by task class, so the user stops deciding per task. Example shape:
 
-> Private data or bulk/overnight → local. Hard reasoning, coding, high-stakes writing → strongest model, budgeted. Routine drafting, formatting, medium tasks → default mid-tier model. Long-context research / multimodal → research-tier model. Real-time market or social signal → live-data model.
+> Strict-tier data or bulk/overnight → local lane. Hard reasoning, coding, high-stakes writing → strongest model, budgeted. Routine drafting, formatting, medium tasks → default mid-tier model. Long-context research / multimodal → research-tier model. Real-time market or social signal → live-data model.
 
 A good routing rule covers ~90% of the portfolio. Read `references/resource-assessment.md` for the full assessment method, capability-tier guidance, and subscription-rationalization advice.
 
@@ -82,7 +90,7 @@ The evidence from real sprints: **only human-gated work slips.** So invert the u
 
 - **One starred must-do per day.** Each day gets exactly one ★ task — the single thing that must happen. More than one star per day is a plan for slippage.
 - **Energy-aware pacing.** Ask the user which work classes drain them and which don't, and don't let high-drain classes (deep analysis, big decisions) carry consecutive daily stars. Mechanical work (paste-work, builds, phone-camera inventory) can fill low-energy days.
-- **Separate digestion from decision.** Schedule *reading days* (absorb AI outputs, explicitly "no decisions") during the week and a *decision day* near the end, when everything has been digested. Decisions made fresh on accumulated material beat decisions forced mid-stream.
+- **Separate digestion from decision.** Schedule *reading days* (absorb AI outputs, explicitly "no decisions") during the week and a *decision day* near the end, when everything has been digested. Decisions made fresh on accumulated material beat decisions forced mid-stream. Mark every pending decision in the plan with the scannable convention `[? — Awaiting Human Decision: Option A vs Option B]` so check-ins can find bottleneck decisions mechanically instead of by re-reading the plan.
 
 ### Fill the model lanes
 
@@ -106,7 +114,7 @@ Every plan contains, in order:
 3. **Tool routing table** — one row per resource, listing its assigned task IDs.
 4. **Daily schedule** — one row per day: ★ human block FIRST, then premium-model slot, then other AI lanes, then background. Mark light days and the decision day.
 5. **Sprint scoreboard** — one row per project: task count, done count, % done, one-line sprint goal. Use live formulas if xlsx.
-6. **Rules of the sprint** — numbered, explicit: pacing rules, slippage priority, quality gates ("X is mandatory before Y ships"), degradation path, session-end protocol, and a marker convention for decisions awaiting the human.
+6. **Rules of the sprint** — numbered, explicit: pacing rules, slippage priority, quality gates ("X is mandatory before Y ships"), degradation path, session-end protocol, the `[? — Awaiting Human Decision: …]` marker convention, and a **session-hygiene rule**: work in one session per task or task-cluster rather than one endless thread — long threads re-send their whole history every turn, quietly taxing both budget and quality (15–20 substantial turns or many large file reads is a reasonable warning sign, not a law). The session-end protocol is what makes starting fresh cheap: statuses and briefs are already written down, so no context is lost by forking.
 
 Keep the plan honest about scale: a sprint with 60+ tasks and 7 projects is normal for a heavy user; a first-time user might have 10 tasks and 2 projects. Same structure, smaller table.
 

@@ -4,7 +4,7 @@ Practitioner-built Claude skills by [Adrian Ionescu](https://github.com/aei-soli
 
 ## AI Portfolio Manager — the SprintFleet Method
 
-**Run your whole portfolio of projects across multiple AI models — without drowning, and without hitting Wednesday's usage wall.**
+**Run your whole portfolio of projects across multiple AI models — without drowning, and without hitting the mid-week usage wall.**
 
 Most people juggling many projects with AI hit the same three failures: the premium model budget dies mid-week, human-gated steps pile up unscheduled until everything slips, and projects quietly stall because nothing remembers their next step. The **SprintFleet Method** — developed and battle-tested by a consultant running 30+ concurrent projects across five AI subscriptions and a local model cluster — fixes all three with two correlated layers:
 

@@ -17,6 +17,7 @@ Default format: one xlsx workbook. A markdown equivalent (one index file + one f
 | Priority | High / Medium / Low |
 | Status | Not Started / In Progress / On Hold / Completed |
 | Complexity | Simple / Medium / Complex — a scoping hint for sprint selection |
+| Confidentiality | Open / Restricted / Strict — routing boundary (Strict = local-only lane, overrides optimization mode) |
 | Next Step | ONE concrete next action. The most important cell in the row: a project with an empty Next Step is stalled by definition |
 | Target Date | Only for real deadlines; leave blank rather than invent |
 | Notes | One line of context |
@@ -72,6 +73,20 @@ Correlation rules — these prevent the drift that quietly kills multi-file syst
 5. **Backup before bulk edits**: dated `.bak-<tag>-<date>` copies of any file about to be rewritten.
 
 When adopting an *existing* user system, first map what they have (tracker? index? project files? which is freshest?), confirm the source of truth with them, and reconcile mirrors to it before adding anything new.
+
+**For brand-new users with no system**, offer this default skeleton so files land in predictable places from day one (it's a starting default, not a requirement — a user's own conventions always win):
+
+```text
+Projects/
+├── 00_Master_Tracker.xlsx
+├── 01_Current_Sprint/
+│   └── sprint_plan_rev1.md        (+ sprint reports)
+└── 02_Projects/
+    ├── 01 Project Name/           (number-first, sorts in tracker order)
+    │   ├── memory.md              (objective, work plan, session log)
+    │   └── files/                 (deliverables, data, documents)
+    └── 02 Another Project/
+```
 
 ## Portfolio review (monthly or quarterly — separate from sprints)
 

@@ -1,5 +1,5 @@
 {
-  "skill_name": "ai-sprint-planner",
+  "skill_name": "ai-portfolio-manager",
   "evals": [
     {
       "id": 0,
@@ -52,6 +52,19 @@
         "Uses the Thursday 9am reset deliberately: grant premium work into the fresh cycle; remaining 15% Opus restricted to essentials",
         "The new quote request is explicitly deferred to carry-over/next sprint OR displaces a specifically named task",
         "Produces a revised rest-of-week plan (revision marked) with one must-do per day and the grant protected"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Set up my sprint. I have Claude Pro, and at home a Mac Studio running local models (Llama and Gemma via Ollama) that I can reach from my laptop over Tailscale while I'm traveling this week. Two projects: translating a client's legal contracts (my contract says the text can never touch any cloud service), and writing three posts for my public blog. Mornings only.",
+      "expected_output": "Sprint plan with confidentiality-tier routing: contracts flagged Strict and locked to the local/Tailscale lane regardless of mode, blog routed to Claude Pro, travel context acknowledged, a connection-verification step before Strict tasks, honest fallback if the tunnel is down (human-only, not cloud downgrade)",
+      "files": [],
+      "assertions": [
+        "The contract project is treated as Strict tier and routed exclusively to the local/Ollama lane \u2014 never to Claude or any cloud model",
+        "The blog project is routed to cloud lanes (Claude Pro) normally",
+        "The travel setup is acknowledged: laptop dispatching to the home machine over the private network, with a connection-verification step before Strict work",
+        "The fallback if the local lane is unreachable is human-only or postponement \u2014 NOT a quiet downgrade of the contracts to a cloud model",
+        "Plan retains the standard skeleton: one starred must-do per morning, budget stamp (verified/assumed), slippage order"
       ]
     }
   ]
