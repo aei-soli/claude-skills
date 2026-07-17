@@ -14,7 +14,7 @@
       "name": "ai-portfolio-manager",
       "source": "./plugins/ai-portfolio-manager",
       "description": "The SprintFleet Method: manage a portfolio of projects with AI \u2014 persistent master tracker + weekly sprint plans routing tasks across AI models and subscriptions, with usage-budget management, check-ins, remediation, and sprint-end reports.",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "author": {
         "name": "Adrian Ionescu"
       },

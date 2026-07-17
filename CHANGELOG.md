@@ -2,6 +2,11 @@
 
 ## ai-portfolio-manager
 
+### 1.4.1 — 2026-07-17
+- Verified-clock rule: establish the actual date/time from the environment (shell `date` / platform clock) at session start and before every check-in — never infer time from conversation flow; sessions resume across days invisibly and all gauges are date-anchored. No clock → ask the user. All log entries carry verified date stamps.
+
+## ai-portfolio-manager
+
 ### 1.4.0 — 2026-07-16
 - Confidentiality tiers (Open / Restricted / Strict) per project/task; Strict locks routing to the local lane and overrides optimization modes — boundaries beat preferences; fallback is human-only, never a quiet cloud downgrade.
 - Scannable decision markers: [? — Awaiting Human Decision: A vs B]; daily check-ins scan for them.

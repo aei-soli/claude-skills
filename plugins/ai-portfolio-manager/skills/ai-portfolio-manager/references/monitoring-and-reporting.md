@@ -2,6 +2,10 @@
 
 How to run a sprint after the plan is written: the check-in script, the remediation playbook, and the sprint-end report.
 
+## Step zero of every check-in: establish the actual date and time
+
+Never assume what day or time it is from conversation flow — sessions pause and resume across hours or days without any visible seam, and every gauge in this system is time-anchored (budget cycles have reset timestamps; "which day's ★ is due" depends on the date; session logs are worthless if misdated). Before any check-in, monitoring action, or log entry: get the real clock from the environment (run a shell `date`, or use the platform's current-date context). If the environment offers no clock, ask the user for the date and time — one short question beats a silently wrong sprint day. Timestamp every session-log entry and plan revision with the verified date, and when a session resumes after a gap, recompute where the sprint actually stands (elapsed days, passed resets, missed stars) before saying anything about progress.
+
 ## Daily check-in (2 minutes)
 
 Ask the user for exactly three things — nothing that requires opening more than one screen:

@@ -136,7 +136,8 @@ Be straight about measurement limits: subscription vendors expose percent-of-bar
 
 ## Protocols (continuity)
 
-- **Session-end protocol**: at the end of every working session, update the task statuses in the plan and the project's brief/notes. This is what makes next session start warm instead of cold.
+- **Session-start time check**: verify the actual date and time from the environment (shell `date` or platform clock) at the start of every session and before every check-in — never infer it from conversation flow, because sessions pause and resume across days invisibly, and budget cycles, daily stars, and logs are all date-anchored. No clock available → ask the user.
+- **Session-end protocol**: at the end of every working session, update the task statuses in the plan and the project's brief/notes, with a verified date stamp. This is what makes next session start warm instead of cold.
 - **Sprint-end protocol** (last day): the report above, plus sync with the user's master tracker/task list.
 - **Recurring reviews**: anything that repeats (monthly reviews, quarterly checks) should become a scheduled task, not a sprint line item.
 
